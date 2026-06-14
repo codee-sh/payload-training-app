@@ -1,0 +1,41 @@
+{
+  "home": {
+    "greeting": "Hey, {name}",
+    "yourTrainingPlans": "Your training plans",
+    "noPlans": "You don't have a plan assigned yet. Contact your coach.",
+    "seriesPrefix": "Sets",
+    "repsPrefix": "Reps",
+    "durationPrefix": "Time",
+    "restPrefix": "Rest"
+  },
+  "exercise": {
+    "video": "▶ video",
+    "addSet": "+ add set",
+    "duplicateSet": "Duplicate last set"
+  },
+  "seriesForm": {
+    "note": "Note",
+    "notePlaceholder": "note",
+    "save": "Save",
+    "cancel": "Cancel",
+    "bodyweightActive": "bodyweight ✕",
+    "bodyweightTitle": "Bodyweight",
+    "atLeastOneValue": "Enter at least one value"
+  },
+  "login": {
+    "title": "Sign in",
+    "subtitle": "Enter the credentials provided by your coach.",
+    "emailLabel": "E-mail",
+    "passwordLabel": "Password",
+    "loggingIn": "Signing in…",
+    "button": "Sign in",
+    "invalidCredentials": "Invalid e-mail or password.",
+    "genericError": "Something went wrong. Please try again."
+  },
+  "nav": {
+    "logout": "Sign out"
+  },
+  "workout": {
+    "activeContext": "Active context"
+  }
+}

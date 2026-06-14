@@ -1,0 +1,41 @@
+{
+  "home": {
+    "greeting": "Cześć, {name}",
+    "yourTrainingPlans": "Twoje plany treningowe",
+    "noPlans": "Nie masz jeszcze przypisanego planu. Skontaktuj się z trenerem.",
+    "seriesPrefix": "Serie",
+    "repsPrefix": "Powt.",
+    "durationPrefix": "Czas",
+    "restPrefix": "Przerwa"
+  },
+  "exercise": {
+    "video": "▶ wideo",
+    "addSet": "+ dodaj serię",
+    "duplicateSet": "Duplikuj ostatnią serię"
+  },
+  "seriesForm": {
+    "note": "Notatka",
+    "notePlaceholder": "notatka",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "bodyweightActive": "masa własna ✕",
+    "bodyweightTitle": "Masa własnego ciała",
+    "atLeastOneValue": "Podaj co najmniej jedną wartość"
+  },
+  "login": {
+    "title": "Zaloguj się",
+    "subtitle": "Wpisz dane otrzymane od trenera.",
+    "emailLabel": "E-mail",
+    "passwordLabel": "Hasło",
+    "loggingIn": "Logowanie…",
+    "button": "Zaloguj",
+    "invalidCredentials": "Nieprawidłowy e-mail lub hasło.",
+    "genericError": "Coś poszło nie tak. Spróbuj ponownie."
+  },
+  "nav": {
+    "logout": "Wyloguj"
+  },
+  "workout": {
+    "activeContext": "Aktywny kontekst"
+  }
+}

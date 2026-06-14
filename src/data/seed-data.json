@@ -1,0 +1,392 @@
+{
+  "exportedAt": "2026-06-14T00:00:00.000Z",
+  "exercises": [
+    {
+      "id": 1,
+      "name": "Squat",
+      "trackingType": "strength",
+      "description": null,
+      "videoUrl": null,
+      "muscleGroup": null,
+      "equipment": null
+    },
+    {
+      "id": 2,
+      "name": "Bench Press",
+      "trackingType": "strength",
+      "description": null,
+      "videoUrl": null,
+      "muscleGroup": null,
+      "equipment": null
+    },
+    {
+      "id": 3,
+      "name": "Deadlift",
+      "trackingType": "strength",
+      "description": null,
+      "videoUrl": null,
+      "muscleGroup": null,
+      "equipment": null
+    },
+    {
+      "id": 4,
+      "name": "Pull-up",
+      "trackingType": "strength",
+      "description": null,
+      "videoUrl": null,
+      "muscleGroup": null,
+      "equipment": null
+    },
+    {
+      "id": 5,
+      "name": "Overhead Press",
+      "trackingType": "strength",
+      "description": null,
+      "videoUrl": null,
+      "muscleGroup": null,
+      "equipment": null
+    },
+    {
+      "id": 6,
+      "name": "Romanian Deadlift",
+      "trackingType": "strength",
+      "description": null,
+      "videoUrl": null,
+      "muscleGroup": null,
+      "equipment": null
+    },
+    {
+      "id": 7,
+      "name": "Barbell Row",
+      "trackingType": "strength",
+      "description": null,
+      "videoUrl": null,
+      "muscleGroup": null,
+      "equipment": null
+    },
+    {
+      "id": 8,
+      "name": "Plank",
+      "trackingType": "time",
+      "description": null,
+      "videoUrl": null,
+      "muscleGroup": null,
+      "equipment": null
+    }
+  ],
+  "plans": [
+    {
+      "id": 1,
+      "title": "Demo Plan",
+      "status": "active",
+      "startDate": null,
+      "endDate": null,
+      "description": null,
+      "source": "seed-data.json"
+    }
+  ],
+  "microcycles": [
+    {
+      "id": 1,
+      "title": "Week 1",
+      "plan": 1,
+      "rpe": 6,
+      "order": 0
+    },
+    {
+      "id": 2,
+      "title": "Week 2",
+      "plan": 1,
+      "rpe": 7,
+      "order": 1
+    }
+  ],
+  "workouts": [
+    {
+      "id": 1,
+      "title": "Workout A",
+      "microcycle": 1,
+      "rpe": 6,
+      "order": 0,
+      "sections": [
+        { "id": "sec-1a-main", "title": "Main", "subtitle": null }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Workout A",
+      "microcycle": 2,
+      "rpe": 7,
+      "order": 0,
+      "sections": [
+        { "id": "sec-2a-main", "title": "Main", "subtitle": null }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Workout B",
+      "microcycle": 2,
+      "rpe": 7,
+      "order": 1,
+      "sections": [
+        { "id": "sec-2b-main", "title": "Main", "subtitle": null }
+      ]
+    }
+  ],
+  "workoutGroups": [
+    {
+      "id": 1,
+      "workout": 1,
+      "sectionRowId": "sec-1a-main",
+      "label": null,
+      "order": 0,
+      "protocol": "standard",
+      "rounds": null,
+      "durationMinutes": null,
+      "intervalSeconds": null,
+      "workSeconds": null,
+      "restSeconds": null,
+      "restBetweenRounds": null
+    },
+    {
+      "id": 2,
+      "workout": 1,
+      "sectionRowId": "sec-1a-main",
+      "label": null,
+      "order": 1,
+      "protocol": "standard",
+      "rounds": null,
+      "durationMinutes": null,
+      "intervalSeconds": null,
+      "workSeconds": null,
+      "restSeconds": null,
+      "restBetweenRounds": null
+    },
+    {
+      "id": 3,
+      "workout": 2,
+      "sectionRowId": "sec-2a-main",
+      "label": null,
+      "order": 0,
+      "protocol": "standard",
+      "rounds": null,
+      "durationMinutes": null,
+      "intervalSeconds": null,
+      "workSeconds": null,
+      "restSeconds": null,
+      "restBetweenRounds": null
+    },
+    {
+      "id": 4,
+      "workout": 2,
+      "sectionRowId": "sec-2a-main",
+      "label": null,
+      "order": 1,
+      "protocol": "standard",
+      "rounds": null,
+      "durationMinutes": null,
+      "intervalSeconds": null,
+      "workSeconds": null,
+      "restSeconds": null,
+      "restBetweenRounds": null
+    },
+    {
+      "id": 5,
+      "workout": 3,
+      "sectionRowId": "sec-2b-main",
+      "label": null,
+      "order": 0,
+      "protocol": "standard",
+      "rounds": null,
+      "durationMinutes": null,
+      "intervalSeconds": null,
+      "workSeconds": null,
+      "restSeconds": null,
+      "restBetweenRounds": null
+    },
+    {
+      "id": 6,
+      "workout": 3,
+      "sectionRowId": "sec-2b-main",
+      "label": null,
+      "order": 1,
+      "protocol": "standard",
+      "rounds": null,
+      "durationMinutes": null,
+      "intervalSeconds": null,
+      "workSeconds": null,
+      "restSeconds": null,
+      "restBetweenRounds": null
+    }
+  ],
+  "workoutExerciseRows": [
+    {
+      "id": 1,
+      "group": 1,
+      "order": 0,
+      "numer": "1",
+      "exercise": 1,
+      "note": null,
+      "rounds": "4",
+      "reps": "6",
+      "kg": null,
+      "tut": null,
+      "rir": "3",
+      "rest": "180"
+    },
+    {
+      "id": 2,
+      "group": 1,
+      "order": 1,
+      "numer": "2",
+      "exercise": 2,
+      "note": null,
+      "rounds": "4",
+      "reps": "8",
+      "kg": null,
+      "tut": null,
+      "rir": "3",
+      "rest": "120"
+    },
+    {
+      "id": 3,
+      "group": 2,
+      "order": 0,
+      "numer": "3",
+      "exercise": 5,
+      "note": null,
+      "rounds": "3",
+      "reps": "10",
+      "kg": null,
+      "tut": null,
+      "rir": "2",
+      "rest": "90"
+    },
+    {
+      "id": 4,
+      "group": 2,
+      "order": 1,
+      "numer": "4",
+      "exercise": 8,
+      "note": null,
+      "rounds": "3",
+      "reps": "30s",
+      "kg": null,
+      "tut": null,
+      "rir": null,
+      "rest": "60"
+    },
+    {
+      "id": 5,
+      "group": 3,
+      "order": 0,
+      "numer": "1",
+      "exercise": 1,
+      "note": null,
+      "rounds": "4",
+      "reps": "5",
+      "kg": null,
+      "tut": null,
+      "rir": "2",
+      "rest": "180"
+    },
+    {
+      "id": 6,
+      "group": 3,
+      "order": 1,
+      "numer": "2",
+      "exercise": 2,
+      "note": null,
+      "rounds": "4",
+      "reps": "8",
+      "kg": null,
+      "tut": null,
+      "rir": "2",
+      "rest": "120"
+    },
+    {
+      "id": 7,
+      "group": 4,
+      "order": 0,
+      "numer": "3",
+      "exercise": 5,
+      "note": null,
+      "rounds": "3",
+      "reps": "8",
+      "kg": null,
+      "tut": null,
+      "rir": "2",
+      "rest": "90"
+    },
+    {
+      "id": 8,
+      "group": 4,
+      "order": 1,
+      "numer": "4",
+      "exercise": 8,
+      "note": null,
+      "rounds": "3",
+      "reps": "45s",
+      "kg": null,
+      "tut": null,
+      "rir": null,
+      "rest": "60"
+    },
+    {
+      "id": 9,
+      "group": 5,
+      "order": 0,
+      "numer": "1",
+      "exercise": 3,
+      "note": null,
+      "rounds": "4",
+      "reps": "5",
+      "kg": null,
+      "tut": null,
+      "rir": "2",
+      "rest": "180"
+    },
+    {
+      "id": 10,
+      "group": 5,
+      "order": 1,
+      "numer": "2",
+      "exercise": 4,
+      "note": null,
+      "rounds": "4",
+      "reps": "6",
+      "kg": null,
+      "tut": null,
+      "rir": "2",
+      "rest": "120"
+    },
+    {
+      "id": 11,
+      "group": 6,
+      "order": 0,
+      "numer": "3",
+      "exercise": 6,
+      "note": null,
+      "rounds": "3",
+      "reps": "10",
+      "kg": null,
+      "tut": null,
+      "rir": "2",
+      "rest": "90"
+    },
+    {
+      "id": 12,
+      "group": 6,
+      "order": 1,
+      "numer": "4",
+      "exercise": 7,
+      "note": null,
+      "rounds": "3",
+      "reps": "10",
+      "kg": null,
+      "tut": null,
+      "rir": "2",
+      "rest": "90"
+    }
+  ]
+}

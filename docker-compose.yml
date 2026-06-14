@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: training-app-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: training
+      POSTGRES_PASSWORD: training
+      POSTGRES_DB: training
+    ports:
+      - "55432:5432"
+    volumes:
+      - training_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U training -d training"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  training_pgdata:
