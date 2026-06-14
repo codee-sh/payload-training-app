@@ -3281,13 +3281,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/semver@npm:^7":
-  version: 7.7.1
-  resolution: "@types/semver@npm:7.7.1"
-  checksum: 10c0/c938aef3bf79a73f0f3f6037c16e2e759ff40c54122ddf0b2583703393d8d3127130823facb880e694caa324eb6845628186aac1997ee8b31dc2d18fafe26268
-  languageName: node
-  linkType: hard
-
 "@types/unist@npm:*, @types/unist@npm:^3.0.0":
   version: 3.0.3
   resolution: "@types/unist@npm:3.0.3"
@@ -5992,10 +5985,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"human-id@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "human-id@npm:3.0.1"
-  checksum: 10c0/8d8f10fde5fc0134defe06ef1b328794a4acc8aebfdadab0c544b5f9c0ac7fc631368d71bdf3ab1ce8aa1f693ebacd33353cbfaaf8e18b23324cfdcded2a875c
+"human-id@npm:^4.1.1":
+  version: 4.2.0
+  resolution: "human-id@npm:4.2.0"
+  bin:
+    human-id: dist/cli.js
+  checksum: 10c0/80071f3b785b2e91080b5f9aa2d079c2e9a464e009ea12c035255b61d1b70beefe7eda42209dff9c1bb9a9fa58e50ada38c1b314ba3a23266a72cd5e9a453e1f
   languageName: node
   linkType: hard
 
@@ -8049,7 +8044,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.5.15, postcss@npm:^8.5.15":
+"postcss@npm:8.5.15":
   version: 8.5.15
   resolution: "postcss@npm:8.5.15"
   dependencies:
@@ -8574,7 +8569,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.6.0":
+"semver@npm:^6.3.1":
+  version: 6.3.1
+  resolution: "semver@npm:6.3.1"
+  bin:
+    semver: bin/semver.js
+  checksum: 10c0/e3d79b609071caa78bcb6ce2ad81c7966a46a7431d9d58b8800cfa9cb6a63699b3899a0e4bcce36167a284578212d9ae6942b6929ba4aa5015c079a67751d42d
+  languageName: node
+  linkType: hard
+
+"semver@npm:^7.3.5, semver@npm:^7.5.3, semver@npm:^7.7.1, semver@npm:^7.7.2, semver@npm:^7.7.3":
   version: 7.8.4
   resolution: "semver@npm:7.8.4"
   bin:
@@ -9273,7 +9277,6 @@ __metadata:
     "@types/node": "npm:24.12.3"
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
-    "@types/semver": "npm:^7"
     cross-env: "npm:10.1.0"
     dotenv: "npm:16.4.7"
     eslint: "npm:^9.16.0"
@@ -9283,12 +9286,10 @@ __metadata:
     next: "npm:^16.2.9"
     next-intl: "npm:^4.13.0"
     payload: "npm:3.85.1"
-    postcss: "npm:^8.5.15"
     prettier: "npm:^3.4.2"
     react: "npm:^19.2.7"
     react-dom: "npm:^19.2.7"
     react-hook-form: "npm:^7.79.0"
-    semver: "npm:^7.6.0"
     sharp: "npm:0.34.2"
     tailwindcss: "npm:^4.3.0"
     tsx: "npm:^4.22.4"
