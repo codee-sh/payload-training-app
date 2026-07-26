@@ -17,7 +17,7 @@
   - title: ["docs:", "documentation:"]
   - head: ["docs/", "documentation/"]
 
-dependencies:
+"dependencies":
   - title: ["deps:", "dependencies:", "bump "]
   - head: ["deps/", "dependencies/"]
 
@@ -25,7 +25,7 @@ dependencies:
   - title: ["chore:"]
   - head: ["chore/"]
 
-breaking:
+"breaking":
   - title: ["breaking:", "BREAKING:"]
   - head: ["breaking/"]
 
