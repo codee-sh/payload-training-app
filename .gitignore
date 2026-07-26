@@ -56,4 +56,5 @@ node_modules/
 .agents
 .ai/things
 .ai/audits
+.ai/pr-description.md
 skills-lock.json

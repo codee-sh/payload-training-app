@@ -29,6 +29,7 @@ Match the task to the table before starting. A single task often maps to multipl
 | Security review, or adding/modifying auth, access control, uploads, CORS/CSRF, headers | Load skill `payload-security`; keep `.ai/audits/security-audit.md` current |
 | Writing questions for a client or stakeholder | Load skill `writing-questions` |
 | Starting a new spec or reviewing one | Load skill `spec-writing` |
+| Generating a pull request description | Follow `.ai/instructions/generate-pr-description.md` |
 | Any TypeScript code | Load skill `code-style` |
 
 ---
@@ -197,6 +198,20 @@ npx skills add <src> -a claude-code -a codex --copy  # install skills
 - Implement every data backfill as a separate, idempotent script through the Payload Local API.
 - Do not add data backfill SQL to Payload-generated schema migrations.
 - Maintainers run backfill scripts manually. Agents must not run them.
+
+---
+
+## Pull Request Descriptions
+
+- Treat `Generate PR description`, `Wygeneruj opis PR`, and equivalent requests
+  as an instruction to generate the file below.
+- When asked to generate a pull request description, follow
+  `.ai/instructions/generate-pr-description.md`.
+- Store the generated description in `.ai/pr-description.md`. This file is a local,
+  gitignored artifact and must not be committed.
+- `yarn pr:create` reads that file and creates a new pull request or updates the
+  existing open pull request for the current branch.
+- Pull request descriptions must not contain commit lists or commit hashes.
 
 ---
 

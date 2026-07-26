@@ -34,6 +34,29 @@ This guide explains how we organize releases, structure branches, and prepare pu
    - Ensure the branch merges cleanly and CI is green before requesting review
    - Reference related issues or discussions
 
+   Ask an AI agent to `Generate PR description` (or `Wygeneruj opis PR`) before
+   running:
+
+   ```bash
+   yarn pr:create
+   ```
+
+   The agent follows `.ai/instructions/generate-pr-description.md` and writes the
+   local, gitignored `.ai/pr-description.md` file. The command creates a new pull
+   request or updates the existing open pull request for the current branch.
+
+   To preview the description without changing GitHub:
+
+   ```bash
+   PR_DRY_RUN=true yarn pr:create
+   ```
+
+   If AI is unavailable, explicitly enable the deterministic fallback:
+
+   ```bash
+   PR_ALLOW_FALLBACK=true yarn pr:create
+   ```
+
 ## Release Process
 
 > **Maintainers only.** Steps 1–3 are automated by `yarn prepare-release` (runs `changeset version`, commits, pushes `develop`, creates the `release/vX.Y.Z` branch, and opens the release PR). The steps below document what the script does.
