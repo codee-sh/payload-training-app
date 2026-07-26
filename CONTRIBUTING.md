@@ -51,12 +51,6 @@ This guide explains how we organize releases, structure branches, and prepare pu
    PR_DRY_RUN=true yarn pr:create
    ```
 
-   If AI is unavailable, explicitly enable the deterministic fallback:
-
-   ```bash
-   PR_ALLOW_FALLBACK=true yarn pr:create
-   ```
-
 ## Release Process
 
 > **Maintainers only.** Steps 1–3 are automated by `yarn prepare-release` (runs `changeset version`, commits, pushes `develop`, creates the `release/vX.Y.Z` branch, and opens the release PR). The steps below document what the script does.

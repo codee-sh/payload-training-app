@@ -10,8 +10,6 @@ BASE_BRANCH="${BASE_BRANCH:-develop}"
 BASE_REF="${BASE_REF:-origin/${BASE_BRANCH}}"
 PR_BODY_FILE="${PR_BODY_FILE:-.ai/pr-description.md}"
 PR_DRY_RUN="${PR_DRY_RUN:-false}"
-PR_ALLOW_FALLBACK="${PR_ALLOW_FALLBACK:-false}"
-PR_TESTING="${PR_TESTING:-- Not run (not requested).}"
 
 CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 if [[ -z "$CURRENT_BRANCH" || "$CURRENT_BRANCH" == "HEAD" ]]; then
@@ -24,104 +22,6 @@ if ! git rev-parse --verify "$BASE_REF" >/dev/null 2>&1; then
   echo "Fetch it first or override BASE_REF." >&2
   exit 1
 fi
-
-TEMP_DIR="$(mktemp -d "${TMPDIR:-/tmp}/create-pr.XXXXXX")"
-trap 'rm -rf "$TEMP_DIR"' EXIT
-
-extract_changeset_summary() {
-  awk '
-    BEGIN { separatorCount=0; summary="" }
-    /^---$/ { separatorCount++; next }
-    separatorCount >= 2 {
-      if (summary == "" && $0 ~ /[^[:space:]]/) {
-        summary=$0
-        next
-      }
-      if (summary != "" && $0 ~ /^[[:space:]]*$/) {
-        exit
-      }
-      if (summary != "") {
-        summary=summary " " $0
-      }
-    }
-    END { print summary }
-  ' "$1"
-}
-
-write_fallback_description() {
-  local output_file="$1"
-  local changeset_summaries_file="$TEMP_DIR/changeset-summaries.txt"
-  local changed_files_file="$TEMP_DIR/changed-files.txt"
-  local changed_areas_file="$TEMP_DIR/changed-areas.txt"
-  local migrations_file="$TEMP_DIR/migrations.txt"
-
-  : > "$changeset_summaries_file"
-  : > "$changed_files_file"
-  : > "$changed_areas_file"
-  : > "$migrations_file"
-
-  git diff --name-only "$BASE_REF"...HEAD > "$changed_files_file"
-
-  while IFS= read -r changeset_file; do
-    [[ -f "$changeset_file" ]] || continue
-    [[ "$(basename "$changeset_file")" == "README.md" ]] && continue
-
-    local summary
-    summary="$(extract_changeset_summary "$changeset_file")"
-    if [[ -n "$summary" ]]; then
-      printf '%s\n' "$summary" >> "$changeset_summaries_file"
-    fi
-  done < <(git diff --name-only "$BASE_REF"...HEAD -- '.changeset/*.md')
-
-  awk -F/ '
-    NF == 1 { print $1; next }
-    NF > 1 { print $1 "/" $2 }
-  ' "$changed_files_file" | sort -u > "$changed_areas_file"
-
-  awk '/^src\/migrations\// { print }' "$changed_files_file" > "$migrations_file"
-
-  {
-    echo "## Summary"
-    echo
-    if [[ -s "$changeset_summaries_file" ]]; then
-      while IFS= read -r summary; do
-        printf -- '- %s\n' "$summary"
-      done < "$changeset_summaries_file"
-    else
-      echo "- Update the areas included in this pull request."
-    fi
-
-    echo
-    echo "## Architecture"
-    echo
-    if [[ -s "$changed_areas_file" ]]; then
-      echo "- Changed areas:"
-      while IFS= read -r changed_area; do
-        printf -- '  - `%s`\n' "$changed_area"
-      done < "$changed_areas_file"
-    else
-      echo "- No material architecture changes."
-    fi
-
-    echo
-    echo "## Database"
-    echo
-    if [[ -s "$migrations_file" ]]; then
-      echo "- Included migration files:"
-      while IFS= read -r migration_file; do
-        printf -- '  - `%s`\n' "$migration_file"
-      done < "$migrations_file"
-      echo "- Database migrations must be run manually."
-    else
-      echo "- No database changes."
-    fi
-
-    echo
-    echo "## Testing"
-    echo
-    printf '%s\n' "$PR_TESTING"
-  } > "$output_file"
-}
 
 validate_description() {
   local description_file="$1"
@@ -141,17 +41,13 @@ validate_description() {
 }
 
 if [[ ! -s "$PR_BODY_FILE" ]]; then
-  if [[ "$PR_ALLOW_FALLBACK" != "true" ]]; then
-    echo "Error: missing pull request description: $PR_BODY_FILE" >&2
-    echo "Ask an AI agent to 'Generate PR description' and follow:" >&2
-    echo "  .ai/instructions/generate-pr-description.md" >&2
-    echo "To use the deterministic fallback instead:" >&2
-    echo "  PR_ALLOW_FALLBACK=true yarn pr:create" >&2
-    exit 1
-  fi
-
-  PR_BODY_FILE="$TEMP_DIR/fallback-description.md"
-  write_fallback_description "$PR_BODY_FILE"
+  echo "Error: missing pull request description: $PR_BODY_FILE" >&2
+  echo "First ask an AI agent to 'Generate PR description' or 'Wygeneruj opis PR'." >&2
+  echo "The agent must follow:" >&2
+  echo "  .ai/instructions/generate-pr-description.md" >&2
+  echo "Then preview it with:" >&2
+  echo "  PR_DRY_RUN=true yarn pr:create" >&2
+  exit 1
 fi
 
 validate_description "$PR_BODY_FILE"
