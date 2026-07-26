@@ -49,7 +49,7 @@
     "@types/react-dom": "19.2.3",
     "eslint": "^9.16.0",
     "eslint-config-next": "16.2.7",
-    "postcss": "^8.5.15",
+    "postcss": "^8.5.18",
     "prettier": "^3.4.2",
     "tailwindcss": "^4.3.0",
     "tsx": "^4.22.4",
