@@ -51,6 +51,16 @@ This guide explains how we organize releases, structure branches, and prepare pu
    PR_DRY_RUN=true yarn pr:create
    ```
 
+   If no AI model is available, prepare the description manually from the
+   tracked template:
+
+   ```bash
+   cp .ai/templates/pr-description.md .ai/pr-description.md
+   ```
+
+   Replace every instruction in the copied file before running
+   `yarn pr:create`. The command rejects an incomplete template.
+
 ## Release Process
 
 > **Maintainers only.** Steps 1–3 are automated by `yarn prepare-release` (runs `changeset version`, commits, pushes `develop`, creates the `release/vX.Y.Z` branch, and opens the release PR). The steps below document what the script does.

@@ -38,6 +38,11 @@ validate_description() {
       exit 1
     fi
   done
+
+  if grep -Fq "PR_DESCRIPTION_REQUIRED" "$description_file"; then
+    echo "Error: complete all required sections in $description_file." >&2
+    exit 1
+  fi
 }
 
 if [[ ! -s "$PR_BODY_FILE" ]]; then
@@ -45,6 +50,8 @@ if [[ ! -s "$PR_BODY_FILE" ]]; then
   echo "First ask an AI agent to 'Generate PR description' or 'Wygeneruj opis PR'." >&2
   echo "The agent must follow:" >&2
   echo "  .ai/instructions/generate-pr-description.md" >&2
+  echo "If no AI model is available, start from the manual template:" >&2
+  echo "  cp .ai/templates/pr-description.md .ai/pr-description.md" >&2
   echo "Then preview it with:" >&2
   echo "  PR_DRY_RUN=true yarn pr:create" >&2
   exit 1
