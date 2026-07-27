@@ -47,9 +47,8 @@ validate_description() {
 
 if [[ ! -s "$PR_BODY_FILE" ]]; then
   echo "Error: missing pull request description: $PR_BODY_FILE" >&2
-  echo "First ask an AI agent to 'Generate PR description' or 'Wygeneruj opis PR'." >&2
-  echo "The agent must follow:" >&2
-  echo "  .ai/instructions/generate-pr-description.md" >&2
+  echo "First ask an AI agent to 'Generate PR description'." >&2
+  echo "The agent must use the 'generate-pr-description' skill." >&2
   echo "If no AI model is available, start from the manual template:" >&2
   echo "  cp .ai/templates/pr-description.md .ai/pr-description.md" >&2
   echo "Then preview it with:" >&2

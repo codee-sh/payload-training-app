@@ -29,7 +29,7 @@ Match the task to the table before starting. A single task often maps to multipl
 | Security review, or adding/modifying auth, access control, uploads, CORS/CSRF, headers | Load skill `payload-security`; keep `.ai/audits/security-audit.md` current |
 | Writing questions for a client or stakeholder | Load skill `writing-questions` |
 | Starting a new spec or reviewing one | Load skill `spec-writing` |
-| Generating a pull request description | Follow `.ai/instructions/generate-pr-description.md` |
+| Generating a pull request description | Load skill `generate-pr-description` |
 | Any TypeScript code | Load skill `code-style` |
 
 ---
@@ -203,10 +203,10 @@ npx skills add <src> -a claude-code -a codex --copy  # install skills
 
 ## Pull Request Descriptions
 
-- Treat `Generate PR description`, `Wygeneruj opis PR`, and equivalent requests
-  as an instruction to generate the file below.
-- When asked to generate a pull request description, follow
-  `.ai/instructions/generate-pr-description.md`.
+- Treat `Generate PR description` and equivalent requests as an instruction to
+  generate the file below.
+- When asked to generate a pull request description, load skill
+  `generate-pr-description`.
 - Store the generated description in `.ai/pr-description.md`. This file is a local,
   gitignored artifact and must not be committed.
 - `yarn pr:create` reads that file and creates a new pull request or updates the
@@ -219,7 +219,7 @@ npx skills add <src> -a claude-code -a codex --copy  # install skills
 
 Releases use [Changesets](https://github.com/changesets/changesets).
 
-- For any user-facing change, add a changeset: `yarn changeset` (or create a `.changeset/*.md` file with the bump level and summary).
+- Add a changeset for every change, including chores: `yarn changeset` (or create a `.changeset/*.md` file with the bump level and summary).
 - **The maintainer runs the release flow** — `yarn prepare-release` (runs `changeset version`, commits the bump, pushes `develop`, creates the `release/vX.Y.Z` branch, and opens the release PR).
 - Agents must **not** run `prepare-release` or `git push` to remote. Prepare locally only — create the changeset and commits — then hand off with the exact command (`yarn prepare-release`). Push/publish only if the maintainer explicitly asks this time.
 - Branch model and the full human release process: see `CONTRIBUTING.md`.

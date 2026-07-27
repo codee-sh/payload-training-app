@@ -4,13 +4,13 @@ This guide explains how we organize releases, structure branches, and prepare pu
 
 ## Branch Model
 
-- **`main`** – Release-ready code. Every commit is tagged and deployable. Keep PRs targeting `main` limited to hotfixes or release preparation approved by maintainers.
+- **`main`** – Stable, release-ready code. Releases are cut from this branch and tagged as `vX.Y.Z`. Keep PRs targeting `main` limited to hotfixes or release preparation approved by maintainers.
 - **`develop`** – Nightly builds and upcoming release work. Base regular feature work off `develop` so it can soak in automation and shared testing.
 - **Topic branches** – Create a dedicated branch per change using the format `feat/<concise-feature-name>` (for example `feat/customer-export`). Use other prefixes when appropriate (`fix/`, `chore/`, `docs/`).
 
 ## Working on Features
 
-> **External contributors:** your flow ends at a PR to `develop` — branch from `develop`, add a changeset, open the PR. You do **not** create releases; maintainers handle the [Release Process](#release-process) below.
+> **External contributors:** your flow ends at a PR to `develop` — branch from `develop`, add a changeset for every change (including chores), and open the PR. You do **not** create releases; maintainers handle the [Release Process](#release-process) below.
 
 1. **Branch from `develop`**:
    ```bash
@@ -34,16 +34,15 @@ This guide explains how we organize releases, structure branches, and prepare pu
    - Ensure the branch merges cleanly and CI is green before requesting review
    - Reference related issues or discussions
 
-   Ask an AI agent to `Generate PR description` (or `Wygeneruj opis PR`) before
-   running:
+   Ask an AI agent to `Generate PR description` before running:
 
    ```bash
    yarn pr:create
    ```
 
-   The agent follows `.ai/instructions/generate-pr-description.md` and writes the
-   local, gitignored `.ai/pr-description.md` file. The command creates a new pull
-   request or updates the existing open pull request for the current branch.
+   The agent uses the `generate-pr-description` skill and writes the local,
+   gitignored `.ai/pr-description.md` file. The command creates a new pull request
+   or updates the existing open pull request for the current branch.
 
    To preview the description without changing GitHub:
 
@@ -88,15 +87,11 @@ This guide explains how we organize releases, structure branches, and prepare pu
    - Description: Include summary of changes from CHANGELOG.md
    - Wait for review/approval
 
-4. **After PR merge to `main`**:
-   - Tag will be created automatically (or create manually):
-     ```bash
-     git checkout main
-     git pull origin main
-     git tag -a v1.1.X -m "Release v1.1.X"
-     git push origin v1.1.X
-     ```
-   - Create GitHub Release using workflow: Actions → "Create Release" → Run workflow
+4. **After the release PR is merged to `main`**:
+   - The "Create Tag and Release on Merge" workflow automatically creates the
+     `vX.Y.Z` tag and GitHub Release.
+   - If the workflow did not run, for example because the PR title did not start
+     with `release:`, run it manually from GitHub Actions.
 
 5. **Synchronize `develop`** (if needed):
    ```bash
@@ -143,7 +138,7 @@ This guide explains how we organize releases, structure branches, and prepare pu
 
 We use [Changesets](https://github.com/changesets/changesets) for version management:
 
-- **Add changeset** when making changes:
+- **Add a changeset for every change**, including chores:
   ```bash
   yarn changeset
   ```
